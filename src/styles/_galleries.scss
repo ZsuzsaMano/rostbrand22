@@ -1,0 +1,136 @@
+// main:style.scss
+.paintings, .prints, .sculptures, .thumb__gallery, .lighbox__gallery{
+@include flex(space-around, center, row);
+max-width: 90vw;
+margin:auto;
+min-height: 82vh;
+}
+
+.prints{
+  .thumb__figure{
+    width: 300px;
+    height: 400px;
+  }
+}
+
+.thumb__figure{
+  width: 200px;
+  height: 150px;
+  transition: 1s;
+  padding: 0.4rem;
+  background:rgb(244, 245, 245);
+  border: 1px solid rgb(220, 220, 220);
+  color:black;
+  font-size: 0.8rem;
+  margin: 1rem 1rem;
+  cursor: pointer;
+  &:hover{
+    filter: grayscale(50%);
+    transform: scale(1.1,1.1);
+  }
+}
+
+.thumb__image{
+  object-fit:cover;
+  width: 100%;
+  height: 100%;
+}
+
+.thumb__caption{
+display: none;
+}
+
+#lightbox{
+  position:fixed;
+  z-index: 10;
+  top:0;
+  width:100%;
+  height: 100%;
+  display:none;
+}
+
+.lightbox__close{
+  color:white;
+  font-size: 3rem;
+  position: absolute;
+  top:2vh;
+  right: 2vw;
+  font-weight: bold;
+  &:hover{
+    color: #999;
+  text-decoration: none;
+  cursor: pointer;
+  }
+}
+
+.lightbox__figure{
+  position: relative;
+  padding: 0.8rem;
+  background:rgb(244, 245, 245);
+  border: 1px solid rgb(220, 220, 220);
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+    &:hover .arrow{
+    display:block;
+}
+}
+
+.lightbox__image{
+  display:block;
+  max-width:80vw;
+  max-height:80vh;
+  width: auto;
+  height: auto;
+}
+
+.ligthbox__caption{
+  font-size: 0.8rem;
+}
+
+#lightbox.active{
+  @include flex(center,center,row);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.arrow{
+  cursor: pointer;
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  padding:0.5em 1em;
+  background-color: rgba(256,256,256, 0.8);
+  margin: 0.5em;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 2rem;
+  display: none;
+  color: black;
+   &--left{
+     left: 0;
+   }
+   &--right{
+     right: 0;
+  }
+}
+
+
+@media screen and( max-width: 600px){
+
+  .paintings,.prints{
+    margin-top: 5vh;
+  }
+
+  .gallery__figure{
+    width: 100px;
+    height:80px;
+    padding: 0.2rem;
+  }
+
+  .prints{
+    .gallery__figure{
+      width: 250px;
+      height: auto;
+    }
+  }
+}
